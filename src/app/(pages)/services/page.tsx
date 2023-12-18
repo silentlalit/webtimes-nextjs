@@ -33,13 +33,13 @@ const {
   technology,
 } = styles;
 
-function page() {
+function Page() {
   const dispatch = useAppDispatch();
   const { services, loading } = useAppSelector((state) => state.service);
 
   useEffect(() => {
     if (!services.length) dispatch(fetchServices());
-  }, []);
+  }, [dispatch]);
 
   function InlineWrapperWithMargin({ children }: PropsWithChildren) {
     return <span style={{ marginRight: "0.5rem" }}>{children}</span>;
@@ -150,4 +150,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

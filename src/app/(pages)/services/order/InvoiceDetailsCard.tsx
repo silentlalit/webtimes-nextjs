@@ -72,18 +72,6 @@ const FormInfo = ({ order, user, dispatch, setIsOpenModal }: any) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    reset({
-      fullName: user?.address?.fullName || user?.name,
-      companyName: user?.address?.companyName || "",
-      country: user?.address?.country || "",
-      state: user?.address?.state || "",
-      address: user?.address?.address || "",
-      city: user?.address?.city || "",
-      zipCode: user?.address?.zipCode || "",
-    });
-  }, [user.address]);
-
   const {
     control,
     handleSubmit,
@@ -95,6 +83,18 @@ const FormInfo = ({ order, user, dispatch, setIsOpenModal }: any) => {
     reValidateMode: "onChange",
     defaultValues,
   });
+
+  useEffect(() => {
+    reset({
+      fullName: user?.address?.fullName || user?.name,
+      companyName: user?.address?.companyName || "",
+      country: user?.address?.country || "",
+      state: user?.address?.state || "",
+      address: user?.address?.address || "",
+      city: user?.address?.city || "",
+      zipCode: user?.address?.zipCode || "",
+    });
+  }, [user.address, user.name, reset]);
 
   const onSave = async (data: any) => {
     setLoading(true);

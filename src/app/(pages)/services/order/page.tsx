@@ -22,7 +22,7 @@ const {
   rightSide,
 } = styles;
 
-const page = () => {
+const Page = () => {
   const stripePromise = loadStripe(`${process.env.NEXT_PUBLIC_STRIPE_PUB_KEY}`);
   const { push } = useRouter();
   const { logggedInUser } = useAppSelector((state) => state.authUser);
@@ -42,7 +42,7 @@ const page = () => {
       user: logggedInUser,
       userId: logggedInUser?._id,
     });
-  }, [logggedInUser]);
+  }, [logggedInUser, push]);
 
   return (
     <div className={orderPgae}>
@@ -81,4 +81,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

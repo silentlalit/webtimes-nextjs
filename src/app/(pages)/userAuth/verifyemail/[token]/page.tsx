@@ -12,7 +12,7 @@ import Link from "next/link";
 
 const { main, container } = styles;
 
-const page = ({ params }: any) => {
+const Page = ({ params }: any) => {
   const { push } = useRouter();
   const { token } = params;
 
@@ -39,7 +39,7 @@ const page = ({ params }: any) => {
   useEffect(() => {
     if (isAuthenticated) push("/");
     else dispatch(clearErrorMsg());
-  }, [isAuthenticated]);
+  }, [isAuthenticated, dispatch, push]);
 
   return (
     <main className={main}>
@@ -77,4 +77,4 @@ const page = ({ params }: any) => {
   );
 };
 
-export default page;
+export default Page;

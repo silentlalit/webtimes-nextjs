@@ -41,7 +41,7 @@ const socialLinks = [
   },
 ];
 
-function page() {
+function Page() {
   return (
     <div className={main}>
       <header className={contactHeader}>
@@ -107,4 +107,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

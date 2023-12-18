@@ -36,6 +36,7 @@ function SelectMultipleTags({
 }: any) {
   const { message } = error || {};
   const [selectedOption, setSelectedOption] = useState<any>(selected);
+  const id = useId();
 
   return (
     <Controller
@@ -50,7 +51,7 @@ function SelectMultipleTags({
           }}>
           {label && <label>{label}</label>}
           <Select
-            instanceId={useId()}
+            instanceId={id}
             selectedValue={selectedOption}
             value={selectedOption}
             onChange={(option: any) => {

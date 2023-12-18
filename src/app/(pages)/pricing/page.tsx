@@ -3,7 +3,7 @@ import styles from "@/styles/pricingPage.module.scss";
 
 const { main, pricingHeader, container, pricing } = styles;
 
-function page() {
+function Page() {
   return (
     <div className={main}>
       <div className={pricingHeader}>
@@ -25,4 +25,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

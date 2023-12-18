@@ -36,11 +36,11 @@ type FormData = {
   password: string;
 };
 
-const page = () => {
+const Page = () => {
   const { push } = useRouter();
   const dispatch = useAppDispatch();
   const { loading, isAuthenticated, isError, msg } = useAppSelector(
-    (state) => state.authUser
+    (state: any) => state.authUser
   );
 
   const {
@@ -57,7 +57,7 @@ const page = () => {
   useEffect(() => {
     if (isAuthenticated) push("/");
     else dispatch(clearErrorMsg());
-  }, [isAuthenticated, isDirty]);
+  }, [isAuthenticated, isDirty, dispatch, push]);
 
   const loginUser = async (data: any) => {
     const { payload }: any = await dispatch(login(data));
@@ -118,7 +118,7 @@ const page = () => {
           />
 
           <p>
-            Don't have an account.
+            Don&apos;t have an account.
             <Link href="/userAuth/signup">
               <span style={{ color: "#0000EE" }}>Sign up</span>
             </Link>
@@ -166,4 +166,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

@@ -71,7 +71,7 @@ const OrderDetailsCard = ({ order }: any) => {
 
       <footer>
         <div className="flex">
-          <h6>You'll Pay</h6>
+          <h6>You&apos;ll Pay</h6>
           <h6>US${totalPrice}</h6>
         </div>
 

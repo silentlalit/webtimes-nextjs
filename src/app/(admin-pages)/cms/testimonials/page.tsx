@@ -25,7 +25,7 @@ const {
   itemEdit,
 } = styles;
 
-const page = () => {
+const Page = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { testimonials, loading } = useSelector(
     (state: RootState) => state.testimonial
@@ -33,7 +33,7 @@ const page = () => {
 
   useEffect(() => {
     dispatch(fetchTestimonials());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={cms_servicesPage}>
@@ -84,4 +84,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

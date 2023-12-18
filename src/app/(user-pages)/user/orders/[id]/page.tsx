@@ -17,14 +17,14 @@ const {
   cardBox,
 } = styles;
 
-const page = ({ params }: any) => {
-  const { order, loading } = useAppSelector((state) => state.order);
+const Page = ({ params }: any) => {
+  const { order, loading } = useAppSelector((state: any) => state.order);
   const dispatch = useAppDispatch();
   console.log(order);
 
   useEffect(() => {
     dispatch(getOrder(params.id));
-  }, []);
+  }, [dispatch, params.id]);
 
   const {
     projectName,
@@ -98,8 +98,8 @@ const page = ({ params }: any) => {
             <summary>Look at Extras</summary>
 
             <div className={cardBoxsWrapper}>
-              {extras?.map((ex: any) => (
-                <div className={cardBox}>
+              {extras?.map((ex: any, idx: number) => (
+                <div key={idx} className={cardBox}>
                   <h4>{ex?.name}</h4>
                   <p>PRICE: US${ex?.price}</p>
                   <p className="p-color">ACTIVE</p>
@@ -113,4 +113,4 @@ const page = ({ params }: any) => {
   );
 };
 
-export default page;
+export default Page;

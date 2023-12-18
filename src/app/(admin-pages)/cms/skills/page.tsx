@@ -21,13 +21,13 @@ const {
   itemEdit,
 } = styles;
 
-const page = () => {
+const Page = () => {
   const dispatch = useAppDispatch();
   const { skills, loading } = useAppSelector((state) => state.skill);
 
   useEffect(() => {
     if (!skills.length) dispatch(fetchSkills());
-  }, []);
+  }, [skills.length, dispatch]);
 
   return (
     <div className={cms_servicesPage}>
@@ -78,4 +78,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

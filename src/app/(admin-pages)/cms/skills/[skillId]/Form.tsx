@@ -37,15 +37,6 @@ const Form = ({ skill, skillId }: any) => {
   const [showEndDate, setShowEndDate] = useState<boolean>();
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    if (skill) {
-      reset(skill);
-      setShowEndDate(() => skill.workingNow);
-    }
-  }, [skill]);
-
-  const { technologies, image } = skill || "";
-
   const {
     control,
     handleSubmit,
@@ -57,6 +48,15 @@ const Form = ({ skill, skillId }: any) => {
     reValidateMode: "onChange",
     defaultValues,
   });
+
+  useEffect(() => {
+    if (skill) {
+      reset(skill);
+      setShowEndDate(() => skill.workingNow);
+    }
+  }, [skill, reset]);
+
+  const { technologies, image } = skill || "";
 
   const saveChanges = async (data: any) => {
     setLoading(true);
@@ -196,7 +196,10 @@ const Form = ({ skill, skillId }: any) => {
       <Button
         type="submit"
         title="Save Service"
-        wrapperStyle={{ marginTop: 40, pointerEvent: loading && "none" }}
+        wrapperStyle={{
+          marginTop: 40,
+          pointerEvents: loading ? "none" : "all",
+        }}
         loading={loading}
         disabled={loading}
       />

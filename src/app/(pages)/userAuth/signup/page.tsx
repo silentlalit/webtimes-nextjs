@@ -16,7 +16,7 @@ import { clearErrorMsg, signUp } from "@/redux/slices/authSlice";
 
 const { main, container } = styles;
 
-const page = () => {
+const Page = () => {
   const { push } = useRouter();
   const dispatch = useAppDispatch();
   const { loading, isAuthenticated, isError, msg } = useAppSelector(
@@ -48,7 +48,7 @@ const page = () => {
   useEffect(() => {
     if (isAuthenticated) push("/");
     else dispatch(clearErrorMsg());
-  }, [isAuthenticated]);
+  }, [isAuthenticated, dispatch, push]);
 
   return (
     <main className={main}>
@@ -121,4 +121,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

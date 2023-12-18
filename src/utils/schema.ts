@@ -57,8 +57,8 @@ export const ServiceSchema = yup.object({
     .array()
     .of(
       yup.object({
-        label: yup.string(),
-        value: yup.string(),
+        label: yup.string().required("Required"),
+        value: yup.string().required("Required"),
       })
     )
     .required("Service technologies is required, (Atleast one.)"),

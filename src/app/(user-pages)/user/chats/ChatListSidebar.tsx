@@ -23,7 +23,7 @@ const ChatListSidebar = () => {
     socket?.emit("get_conversations_list", { user_id }, (data: any) => {
       dispatch(FetchDirectConversations({ conversations: data }));
     });
-  }, [socket, refreshChats]);
+  }, [socket, refreshChats, dispatch]);
 
   return (
     <div>

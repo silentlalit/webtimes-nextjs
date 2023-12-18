@@ -51,20 +51,6 @@ const Form = ({ projectId, project }: any) => {
   const { push } = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    reset({
-      title: project?.title,
-      description: project?.description,
-      technologies: project?.technologies,
-      categories: project?.categories,
-      thumbnail: project?.thumbnail,
-      github: project?.github,
-      link: project?.link,
-    });
-  }, []);
-
-  const { technologies, categories, thumbnail }: any = project || "";
-
   const {
     control,
     handleSubmit,
@@ -76,6 +62,20 @@ const Form = ({ projectId, project }: any) => {
     reValidateMode: "onChange",
     defaultValues: defaultValues,
   });
+
+  useEffect(() => {
+    reset({
+      title: project?.title,
+      description: project?.description,
+      technologies: project?.technologies,
+      categories: project?.categories,
+      thumbnail: project?.thumbnail,
+      github: project?.github,
+      link: project?.link,
+    });
+  }, [project, reset]);
+
+  const { technologies, categories, thumbnail }: any = project || "";
 
   const saveChanges = async (data: Project) => {
     setLoading(true);

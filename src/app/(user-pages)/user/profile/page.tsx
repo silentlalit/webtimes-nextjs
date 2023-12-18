@@ -31,7 +31,7 @@ const {
   orderBox,
 } = styles;
 
-const page = () => {
+const Page = () => {
   const { logggedInUser }: any = useAppSelector((state) => state.authUser);
   const { loading: ordersLoading, orders }: any = useAppSelector(
     (state) => state.order
@@ -295,4 +295,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

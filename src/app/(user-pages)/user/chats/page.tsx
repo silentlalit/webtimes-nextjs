@@ -22,7 +22,7 @@ const {
   hideUserProfileSection,
 } = styles;
 
-const page = ({ searchParams }: any) => {
+const Page = ({ searchParams }: any) => {
   const messageListRef = useRef<any>(null);
   const { current_messages }: any = useAppSelector(
     (state) => state.conversation.direct_chat
@@ -38,7 +38,7 @@ const page = ({ searchParams }: any) => {
     // Scroll to the bottom of the message list when new messages are added
     room_id &&
       (messageListRef.current.scrollTop = messageListRef.current.scrollHeight);
-  }, [current_messages]);
+  }, [room_id, current_messages]);
 
   useEffect(() => {
     socket?.emit("set_conversation_id", {
@@ -49,7 +49,7 @@ const page = ({ searchParams }: any) => {
   useEffect(() => {
     dispatch(SelectConversation({ room_id: searchParams.room_id }));
     dispatch(ReadAllMsg({ room_id: searchParams.room_id }));
-  }, [searchParams.room_id]);
+  }, [searchParams.room_id, dispatch]);
 
   return (
     <div className={conversationPage}>
@@ -100,4 +100,4 @@ const page = ({ searchParams }: any) => {
   );
 };
 
-export default page;
+export default Page;

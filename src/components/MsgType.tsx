@@ -5,6 +5,7 @@ import { Message_options } from "@/utils/static/data";
 import { HiOutlineDownload } from "react-icons/hi";
 import { AiOutlineFileImage } from "react-icons/ai";
 import { BiDotsVerticalRounded } from "react-icons/bi";
+import Image from "next/image";
 
 const MessageOption = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -96,9 +97,11 @@ const MediaMsg = ({ el, menu }: any) => {
           width: "max-content",
         }}>
         <div className="flex" style={{ flexDirection: "column", gap: 4 }}>
-          <img
+          <Image
             src={el.img}
             alt={el.message}
+            width={200}
+            height={200}
             style={{ maxHeight: 210, borderRadius: "10px" }}
           />
           <p

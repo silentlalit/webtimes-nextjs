@@ -3,7 +3,7 @@
 import React from "react";
 
 function UserPage() {
-  return <div>User page</div>;
+  return <div>User Page</div>;
 }
 
 export default UserPage;

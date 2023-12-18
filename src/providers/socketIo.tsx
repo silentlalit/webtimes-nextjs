@@ -101,7 +101,7 @@ export const SocketProvider = ({ children }: { children: React.ReactNode }) => {
       socketInstance?.off("new_message");
       socketInstance.disconnect();
     };
-  }, []);
+  }, [dispatch]);
 
   return (
     <SocketContext.Provider value={{ socket, isConnected }}>

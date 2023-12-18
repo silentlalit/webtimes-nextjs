@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import styles from "./modal.module.scss";
 import { RiCloseFill } from "react-icons/ri";
@@ -13,8 +15,6 @@ type Props = {
 };
 
 const Modal = ({ title, isOpen, onClose, children, style }: Props) => {
-  if (!isOpen) return null;
-
   useEffect(() => {
     document.querySelector("body")!.style.overflow = "hidden";
 
@@ -22,6 +22,8 @@ const Modal = ({ title, isOpen, onClose, children, style }: Props) => {
       document.querySelector("body")!.style.overflow = "unset";
     };
   }, []);
+
+  if (!isOpen) return null;
 
   return (
     <div className={modal}>

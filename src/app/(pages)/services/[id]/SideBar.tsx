@@ -84,8 +84,8 @@ const SideBar = ({ service, searchParams, setIsOpenSidebar, style }: any) => {
 
           <h4 style={{ margin: "15px 0" }}>Upgrade your order with extras</h4>
 
-          {extras.map((ex) => (
-            <article>
+          {extras.map((ex, idx) => (
+            <article key={idx}>
               <div className="flex">
                 <div>
                   <h4>{ex.name}</h4>

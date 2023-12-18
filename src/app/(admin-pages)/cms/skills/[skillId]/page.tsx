@@ -8,7 +8,7 @@ import { useAppSelector, useAppDispatch } from "@/redux/hook";
 import { clearSkill, getSkill } from "@/redux/slices/skillsSlice";
 import Form from "./Form";
 
-function page({ params }: any) {
+function Page({ params }: any) {
   const { skillId } = params;
   const dispatch = useAppDispatch();
   const { skill, loading } = useAppSelector((state) => state.skill);
@@ -19,7 +19,7 @@ function page({ params }: any) {
     return () => {
       dispatch(clearSkill());
     };
-  }, []);
+  }, [skillId, dispatch]);
 
   return (
     <div className="cms_editService">
@@ -33,4 +33,4 @@ function page({ params }: any) {
   );
 }
 
-export default page;
+export default Page;

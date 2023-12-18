@@ -61,11 +61,11 @@ export default function RootLayout({
           {pathname?.match(/^\/userAuth/) ||
           pathname?.match(/^\/user/) ||
           pathname?.match(/^\/cms/) ? (
-            <App children={children} />
+            <App>{children}</App>
           ) : (
             <>
               <Header />
-              <App children={children} />
+              <App>{children}</App>
               <Footer />
             </>
           )}
@@ -91,7 +91,7 @@ const App = ({ children }: { children: React.ReactNode }) => {
     dispatch(fetchProjects());
     dispatch(fetchSkills());
     dispatch(fetchTestimonials());
-  }, []);
+  }, [dispatch]);
 
   return <Fragment>{children}</Fragment>;
 };

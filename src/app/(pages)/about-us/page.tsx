@@ -22,7 +22,7 @@ const {
   aboutHeader_text_dot,
 } = styles;
 
-function page() {
+function Page() {
   return (
     <div className={main}>
       <header className={aboutHeader}>
@@ -92,4 +92,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

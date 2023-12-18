@@ -57,22 +57,9 @@ const ProjectsPage = () => {
   const [filteredProjects, setFilteredProjects] = useState<Project[]>([]);
   const [openProject, setOpenProject] = useState<Project | null>(null);
 
-  const clearFilters = () => {
-    setFilters({
-      categories: [{ label: "Websites", value: "Websites" }],
-      technologies: [],
-      pricing: [],
-      rating: 0,
-    });
-  };
-
   useEffect(() => {
     if (!projects.length) dispatch(fetchProjects());
-  }, []);
-
-  useEffect(() => {
-    setFilteredProjects(filterProjectsFun());
-  }, [filters]);
+  }, [dispatch, projects.length]);
 
   const filterProjectsFun = () => {
     // filter categories
@@ -85,6 +72,19 @@ const ProjectsPage = () => {
       : projects;
 
     return found;
+  };
+
+  useEffect(() => {
+    setFilteredProjects(filterProjectsFun());
+  }, [filters, filterProjectsFun]);
+
+  const clearFilters = () => {
+    setFilters({
+      categories: [{ label: "Websites", value: "Websites" }],
+      technologies: [],
+      pricing: [],
+      rating: 0,
+    });
   };
 
   return (

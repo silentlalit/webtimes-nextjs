@@ -34,7 +34,7 @@ type ServiceType = {
   }[];
 };
 
-const defaultValues = {
+const defaultValues: ServiceType = {
   name: "",
   title: "",
   description: "",
@@ -73,19 +73,6 @@ const Form = ({ push, serviceId, service, isDisabled }: any) => {
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    reset({
-      name: service?.name,
-      title: service?.title,
-      description: service?.description,
-      technologies: service?.technologies,
-      thumbnail: service?.thumbnail,
-      priceList: service?.priceList,
-    });
-  }, [service]);
-
-  const { thumbnail, technologies }: any = service || "";
-
   const {
     control,
     handleSubmit,
@@ -97,6 +84,19 @@ const Form = ({ push, serviceId, service, isDisabled }: any) => {
     reValidateMode: "onChange",
     defaultValues,
   });
+
+  useEffect(() => {
+    reset({
+      name: service?.name,
+      title: service?.title,
+      description: service?.description,
+      technologies: service?.technologies,
+      thumbnail: service?.thumbnail,
+      priceList: service?.priceList,
+    });
+  }, [service, reset]);
+
+  const { thumbnail, technologies }: any = service || "";
 
   const saveChanges = async (data: ServiceType) => {
     setLoading(true);

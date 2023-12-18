@@ -25,7 +25,7 @@ import {
 } from "@/redux/slices/servicesSlice";
 import Form from "./Form";
 
-function page({ params }: any) {
+function Page({ params }: any) {
   const { push, back } = useRouter();
   const { serviceId } = params;
   const dispatch = useAppDispatch();
@@ -39,7 +39,7 @@ function page({ params }: any) {
     return () => {
       dispatch(clearService());
     };
-  }, []);
+  }, [serviceId, dispatch]);
 
   const uploadImagesHandle = async (files: File[]) => {
     const fd = new FormData();
@@ -135,4 +135,4 @@ function page({ params }: any) {
   );
 }
 
-export default page;
+export default Page;

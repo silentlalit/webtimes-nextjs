@@ -22,7 +22,7 @@ const UserProfileSideBar = ({ open, type }: any) => {
 
   useEffect(() => {
     dispatch(FetchUserProfile());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div style={{ position: "relative", width: "100%" }}>

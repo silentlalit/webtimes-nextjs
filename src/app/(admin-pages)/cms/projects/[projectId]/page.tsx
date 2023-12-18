@@ -15,7 +15,7 @@ import {
 import { BiUpload } from "react-icons/bi";
 import Form from "./Form";
 
-function page({ params }: any) {
+function Page({ params }: any) {
   const { projectId } = params;
   const { project, loading } = useAppSelector((state) => state.project);
   const dispatch = useAppDispatch();
@@ -27,7 +27,7 @@ function page({ params }: any) {
     return () => {
       dispatch(clearProject());
     };
-  }, []);
+  }, [projectId, dispatch]);
 
   const uploadImagesHandle = async (files: File[]) => {
     const fd = new FormData();
@@ -87,4 +87,4 @@ function page({ params }: any) {
   );
 }
 
-export default page;
+export default Page;

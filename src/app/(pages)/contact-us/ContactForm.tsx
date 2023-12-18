@@ -44,20 +44,20 @@ function ContactForm() {
   const sendMessage = async (data: any) => {
     setLoading(true);
 
-    // try {
-    //   const res: any = await instance.post("/contact-us", data);
-    //   toast.success(res.data.message);
-    //   setLoading(false);
-    // } catch (error: any) {
-    //   toast.error(error.message);
-    //   setLoading(false);
-    // }
+    try {
+      const res: any = await instance.post("/contact-us", data);
+      toast.success(res.data.message);
+      setLoading(false);
+    } catch (error: any) {
+      toast.error(error.message);
+      setLoading(false);
+    }
   };
 
   return (
     <div className={right}>
       <div className={right_title}>
-        <h3>Let's make something great together</h3>
+        <h3>Let&apos;s make something great together</h3>
         <p>
           Please mail us at{" "}
           <strong>

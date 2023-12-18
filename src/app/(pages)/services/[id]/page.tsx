@@ -29,7 +29,7 @@ const {
   activePriceBtn,
 } = styles;
 
-const page = ({ params, searchParams }: any) => {
+const Page = ({ params, searchParams }: any) => {
   const { service, loading } = useAppSelector((state) => state.service);
   const { id } = params;
   const pathname = usePathname();
@@ -42,7 +42,7 @@ const page = ({ params, searchParams }: any) => {
     return () => {
       dispatch(clearService());
     };
-  }, []);
+  }, [dispatch, id]);
 
   if (loading)
     return (
@@ -103,7 +103,7 @@ const page = ({ params, searchParams }: any) => {
   );
 };
 
-export default page;
+export default Page;
 
 const SidePriceBox = ({
   priceList,
