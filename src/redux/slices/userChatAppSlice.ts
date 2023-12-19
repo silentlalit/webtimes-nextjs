@@ -23,7 +23,7 @@ const slice = createSlice({
       state.call_logs = action.payload.call_logs;
     },
     fetchUser(state, action) {
-      state.authUser = action.payload.user;
+      state.user = action.payload.user;
     },
 
     // Toggle Sidebar
