@@ -84,7 +84,7 @@ export const DELETE = async (req: NextRequest, { params }: any) => {
     await connectDb();
 
     const { id } = params;
-    const service = await Service.findByIdAndDelete(id);
+    const service: any = await Service.findByIdAndDelete(id);
 
     if (service) {
       [service.thumbnail, ...service.images].forEach((file) =>

@@ -39,7 +39,7 @@ function Page() {
 
   useEffect(() => {
     if (!services.length) dispatch(fetchServices());
-  }, [dispatch]);
+  }, [dispatch, services.length]);
 
   function InlineWrapperWithMargin({ children }: PropsWithChildren) {
     return <span style={{ marginRight: "0.5rem" }}>{children}</span>;

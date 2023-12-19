@@ -68,7 +68,7 @@ const Page = () => {
 
   useEffect(() => {
     dispatch(getAllOrders(userId));
-  }, [userId, refreshOrders]);
+  }, [userId, refreshOrders, dispatch]);
 
   useEffect(() => {
     console.log("{ user_id }", userId);
@@ -80,7 +80,7 @@ const Page = () => {
           dispatch(FetchDirectConversations({ conversations: data }));
         }
       );
-  }, [socket, userId, refreshChats]);
+  }, [socket, userId, refreshChats, dispatch]);
 
   const AddNewChat = (
     orderId: string,

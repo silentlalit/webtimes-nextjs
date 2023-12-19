@@ -61,22 +61,24 @@ const ProjectsPage = () => {
     if (!projects.length) dispatch(fetchProjects());
   }, [dispatch, projects.length]);
 
-  const filterProjectsFun = () => {
-    // filter categories
-    const found = filters.categories.length
-      ? projects.filter((pr) =>
-          pr.categories.some((prCat) => {
-            return filters.categories.some((cat) => prCat.value === cat.value);
-          })
-        )
-      : projects;
-
-    return found;
-  };
-
   useEffect(() => {
+    const filterProjectsFun = () => {
+      // filter categories
+      const found = filters.categories.length
+        ? projects.filter((pr) =>
+            pr.categories.some((prCat) => {
+              return filters.categories.some(
+                (cat) => prCat.value === cat.value
+              );
+            })
+          )
+        : projects;
+
+      return found;
+    };
+
     setFilteredProjects(filterProjectsFun());
-  }, [filters, filterProjectsFun]);
+  }, [filters, projects]);
 
   const clearFilters = () => {
     setFilters({

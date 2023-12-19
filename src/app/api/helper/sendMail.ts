@@ -4,17 +4,17 @@ export const sendEmail = async ({ email, subject, message }: any) => {
   console.log("user", process.env.SMTL_USER, process.env.SMPT_PASSWORD);
   try {
     const transport = nodemailer.createTransport({
-      host: process.env.SMPT_HOST,
-      port: process.env.SMPT_PORT,
-      service: process.env.SMPT_SERVICE,
+      host: process.env.SMTP_HOST as string,
+      port: Number(process.env.SMTP_PORT),
+      service: process.env.SMTP_SERVICE,
       auth: {
-        user: process.env.SMPT_USER,
-        pass: process.env.SMPT_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: process.env.SMPT_MAIL,
+      from: process.env.SMTP_MAIL,
       to: email,
       subject: subject,
       html: message,

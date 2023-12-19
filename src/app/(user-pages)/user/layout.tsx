@@ -48,13 +48,11 @@ const menu = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAppSelector(
-    (state: any) => state.user.logggedInUser
-  );
+  const { logggedInUser } = useAppSelector((state: any) => state.user);
 
   return (
     <div className={userLayout}>
-      {!isAuthenticated ? (
+      {!logggedInUser?.isAuthenticated ? (
         <div style={{ margin: "auto" }}>
           <h4>user is authenticating... Please wait</h4>
           <Loader />

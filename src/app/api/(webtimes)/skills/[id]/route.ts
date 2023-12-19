@@ -79,7 +79,7 @@ export const DELETE = async (req: NextRequest, { params }: any) => {
     await connectDb();
 
     const { id } = params;
-    const skill = await Skill.findByIdAndDelete(id);
+    const skill: any = await Skill.findByIdAndDelete(id);
 
     if (skill) {
       deleteImage("public/upload/", skill.image);

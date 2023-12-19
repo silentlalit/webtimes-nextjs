@@ -20,7 +20,6 @@ const {
 const Page = ({ params }: any) => {
   const { order, loading } = useAppSelector((state: any) => state.order);
   const dispatch = useAppDispatch();
-  console.log(order);
 
   useEffect(() => {
     dispatch(getOrder(params.id));

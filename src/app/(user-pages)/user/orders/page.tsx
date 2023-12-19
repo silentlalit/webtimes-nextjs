@@ -14,9 +14,7 @@ import { trimContent } from "@/utils/utileFun";
 const { dataTableList, filterInputBox } = styles;
 
 const Page = () => {
-  const { _id }: { _id: string | null } = useAppSelector(
-    (state: any) => state.authUser.logggedInUser
-  );
+  const { logggedInUser } = useAppSelector((state: any) => state.authUser);
   const { orders, loading } = useAppSelector((state: any) => state.order);
   const dispatch = useAppDispatch();
   const [filter, setFilter] = useState("");
@@ -25,8 +23,8 @@ const Page = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (_id) dispatch(getAllOrders(_id));
-  }, [_id, dispatch]);
+    if (logggedInUser?._id) dispatch(getAllOrders(logggedInUser._id));
+  }, [logggedInUser?._id, dispatch]);
 
   useEffect(() => {
     setFilteredList(orders);

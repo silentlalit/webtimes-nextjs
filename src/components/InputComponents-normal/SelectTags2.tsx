@@ -64,7 +64,7 @@ function SelectTags({
 
   useEffect(() => {
     onChange(selectedTags);
-  }, [selectedTags]);
+  }, [selectedTags, onChange]);
 
   return (
     <div style={{ ...defaultWrapperStyle, ...wrapperStyle }}>

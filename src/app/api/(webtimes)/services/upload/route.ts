@@ -3,7 +3,6 @@ import { NextResponse, NextRequest } from "next/server";
 import { ErrorRes } from "@/app/api/helper/ErrorRes";
 import Service from "@/app/api/models/service";
 import { connectDb } from "@/app/api/middleware/mongoose";
-import { NextApiRequestQuery } from "next/dist/server/api-utils";
 import { uploadImage, deleteImage } from "@/app/api/helper/utils";
 
 export const POST = async (req: NextRequest) => {
@@ -92,7 +91,7 @@ export const PUT = async (req: NextRequest) => {
   }
 };
 
-export const DELETE = async (req: NextApiRequestQuery) => {
+export const DELETE = async (req: NextRequest) => {
   try {
     await connectDb();
 

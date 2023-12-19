@@ -29,6 +29,14 @@ const serviceOptionList = [
   { value: "nextJs", label: "NextJs" },
 ];
 
+const defaultValues = {
+  name: "",
+  comment: "",
+  rating: "",
+  avatar: "",
+  serviceCat: [],
+};
+
 function Page({ params }: any) {
   const { testimonialId } = params;
   const { push } = useRouter();
@@ -37,6 +45,18 @@ function Page({ params }: any) {
     (state: RootState) => state.testimonial
   );
   const [editTestimonial, setEditTestimonial] = useState<any>("");
+
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<any>({
+    resolver: yupResolver(TestimonialSchema),
+    mode: "all",
+    reValidateMode: "onChange",
+    defaultValues,
+  });
 
   useEffect(() => {
     if (!testimonials.length && testimonialId !== "new") {
@@ -53,8 +73,14 @@ function Page({ params }: any) {
   }, [testimonialId, dispatch, testimonials]);
 
   useEffect(() => {
-    reset(testimonial || editTestimonial);
-  }, [testimonial, editTestimonial]);
+    reset({
+      name: testimonial?.name || editTestimonial?.name,
+      comment: testimonial?.comment || editTestimonial?.comment,
+      serviceCat: testimonial?.serviceCat || editTestimonial?.serviceCat,
+      rating: testimonial?.rating || editTestimonial?.rating,
+      avatar: testimonial?.avatar || editTestimonial?.avatar,
+    });
+  }, [testimonial, editTestimonial, reset]);
 
   const getData = () => {
     if (testimonialId === "new") {
@@ -64,19 +90,7 @@ function Page({ params }: any) {
     }
   };
 
-  const { name, comment, rating, avatar, serviceCat }: any = getData();
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<any>({
-    resolver: yupResolver(TestimonialSchema),
-    mode: "all",
-    reValidateMode: "onChange",
-    defaultValues: { name, comment, serviceCat, rating, avatar },
-  });
+  const { avatar, serviceCat }: any = getData();
 
   const saveChanges = async (data: any) => {
     if (testimonialId === "new") {

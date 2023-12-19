@@ -21,20 +21,20 @@ const Page = ({ params }: any) => {
     (state) => state.authUser
   );
 
-  const verifyEmail = async (token: string) => {
-    const { payload } = await dispatch(verifyUser(token));
-
-    if (payload.success) {
-      push("/");
-      toast.success(payload.message);
-    } else {
-      toast.error(payload.error);
-    }
-  };
-
   useEffect(() => {
+    const verifyEmail = async (token: string) => {
+      const { payload } = await dispatch(verifyUser(token));
+
+      if (payload.success) {
+        push("/");
+        toast.success(payload.message);
+      } else {
+        toast.error(payload.error);
+      }
+    };
+
     if (token?.length) verifyEmail(token);
-  }, [token]);
+  }, [token, dispatch, push]);
 
   useEffect(() => {
     if (isAuthenticated) push("/");

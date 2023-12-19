@@ -55,7 +55,7 @@ export const DELETE = async (req: NextRequest, { params }: any) => {
     await connectDb();
 
     const { id } = params;
-    await Testimonial.findByIdAndRemove(id);
+    await Testimonial.findByIdAndDelete(id);
 
     return NextResponse.json(
       {

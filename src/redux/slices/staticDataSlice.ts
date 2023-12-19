@@ -4,12 +4,10 @@ import data from "@/utils/static/static.json";
 
 interface InitialState {
   technologiesList: {
-    _id: string;
     label: string;
     value: string;
   }[];
   categoriesList: {
-    _id: string;
     label: string;
     value: string;
   }[];

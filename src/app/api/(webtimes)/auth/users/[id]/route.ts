@@ -61,7 +61,7 @@ export async function DELETE(req: NextRequest, { params }: any) {
 
     const { id } = params;
 
-    await User.findByIdAndRemove(id);
+    await User.findByIdAndDelete(id);
 
     return NextResponse.json({
       success: true,

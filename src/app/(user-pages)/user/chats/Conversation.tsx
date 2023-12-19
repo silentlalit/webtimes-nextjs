@@ -31,7 +31,7 @@ const Conversation = ({ isMobile, menu }: any) => {
     socket?.emit("get_messages", { conversation_id: room_id }, (data: any) => {
       dispatch(FetchCurrentMessages({ messages: data }));
     });
-  }, [socket, room_id, dispatch]);
+  }, [socket, room_id, dispatch, conversations]);
 
   return (
     <div style={{ padding: isMobile ? 4 : 8 }}>
