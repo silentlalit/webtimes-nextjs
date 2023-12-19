@@ -48,7 +48,7 @@ const menu = [
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const { logggedInUser } = useAppSelector((state: any) => state.user);
+  const { logggedInUser } = useAppSelector((state: any) => state.authUser);
 
   return (
     <div className={userLayout}>
