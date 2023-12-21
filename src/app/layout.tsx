@@ -40,6 +40,7 @@ const toastOptions = {
 function RootLayout({ children }: { children: React.ReactNode }) {
   const heads = headers();
   const pathname = heads.get("next-url");
+  console.log("first");
 
   return (
     <html>
